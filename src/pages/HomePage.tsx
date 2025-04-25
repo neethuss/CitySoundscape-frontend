@@ -1,3 +1,5 @@
+"use client"
+
 import { useNavigate } from "react-router-dom";
 import useUserStore from "../store/userStore";
 import firstMix from "../../public/uploads/firstmix.webp";
