@@ -1,54 +1,97 @@
-# React + TypeScript + Vite
+# City Ambient Soundscape Mixer - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to create, customize, save, and retrieve ambient city soundscapes by mixing different environmental sounds.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Sound Mixing Interface**: Select from various ambient sound elements (traffic, rain, sirens, cafe murmur, birds, etc.)
+- **Volume Control**: Individual volume sliders for each active sound
+- **User Authentication**: Login and signup functionality to save personal soundscapes
+- **Save & Load**: Store your favorite sound combinations and load them later
+- **Visual Feedback**: Clear visual indicators for active sounds
 
-## Expanding the ESLint configuration
+## Technology Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** with **Vite** for fast development and optimized builds
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **Tone.js** for audio processing and playback
+- **Axios** for API communication
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Pages
+
+- **Login Page**: User authentication
+- **Signup Page**: New user registration
+- **Homepage**: Introduction and navigation
+- **Sound Mix Page**: Main interface for creating and editing soundscapes
+
+## Prerequisites
+
+- Node.js (v14+ recommended)
+- npm or yarn
+- Backend API running (see backend repository)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/neethuss/CitySoundscape-frontend.git
+   
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or with yarn
+   yarn install
+   ```
+
+3. Create a `.env` file in the root directory with the following content:
+   ```
+   VITE_BACKEND_URL = 'http://localhost:3000'
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or with yarn
+   yarn dev
+   ```
+
+5. The application will be available at `http://localhost:5173`
+
+## Building for Production
+
+```bash
+npm run build
+# or with yarn
+yarn build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The built files will be in the `dist` directory and can be served by any static file server.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## API Integration
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+The frontend communicates with the backend through the following endpoints:
+
+- `POST /user/login` - User login
+- `POST /user/signup` - User registration
+- `GET /soundscape` - Retrieve user's saved soundscapes
+-  `GET /soundscape/:id` - Retrieve saved soundscapes by id
+- `POST /soundscape` - Save a new soundscape
+- `PUT /soundscaps/:id` - Update an existing soundscape
+- `DELETE /soundscape/:id` - Delete a soundscape
+
+## Usage
+
+1. Register a new account or log in
+2. Navigate to the Sound Mix page
+3. Select different ambient sounds by clicking on their icons
+4. Adjust individual volume levels using the sliders
+5. Use the master volume control to adjust overall volume
+6. Save your mix by clicking the "Save" button and providing a name
+7. Load previously saved soundscapes from the dropdown menu
+
+## Deployment
+
+The frontend is currently deployed at: https://citysoundscape-frontend.onrender.com
